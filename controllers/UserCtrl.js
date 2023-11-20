@@ -1,4 +1,5 @@
 import User from '../models/User.js';
+import Task from '../models/Tasks.js';
 import asyncHandler from 'express-async-handler';
 import bcrypt from 'bcrypt';
 import { generateToken } from '../utils/generateToken.js';
@@ -175,7 +176,7 @@ export const deleteUser  = asyncHandler(async (req, res)=>{
     try{
         await User.findByIdAndDelete(id);
         // Delete all tasks associated with the user
-        await Task.findByIdAndDelete({user: id});
+        await Task.findOneAndDelete({ user: id });
         res.json({
             status: "success",
             message: `User deleted succesfully`

@@ -9,7 +9,7 @@ export const createTask = asyncHandler(async (req, res) => {
         const user = await User.findById(req.userId);
         // Check if the task already exists
         const exists = await Task.findOne({ name });
-        if(exists){
+        if(exists && exists.user.toString() === req.userId){
             throw new Error("Task already exists");
         }
         const task = await Task.create({ name, description, user: req.userId });
