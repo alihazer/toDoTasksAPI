@@ -104,10 +104,10 @@ export const getUserProfile = asyncHandler(async (req, res) => {
 });
 
 export const addNewAdmin = asyncHandler(async (req, res) => {
-    const { email } = req.body;
+    const { id } = req.params;
     try {
         // Check if user exists
-        const user = await User.findOne({ email });
+        const user = await User.findOne({ _id: id });
         if (!user) {
             throw new Error('User does not exist');
         }

@@ -13,7 +13,7 @@ router.post('/logout', isLoggedIn, logoutUser);
 router.get('/profile', isLoggedIn,  getUserProfile);
 router.put('/editProfile', isLoggedIn, editUserProfile );
 router.delete('/delete/:id', isLoggedIn, isAdmin, deleteUser);
-router.get('/allUsers', isLoggedIn ,isAdmin, getAllUsers);
+router.get('/all', isLoggedIn ,isAdmin, getAllUsers);
 router.post('/addAdmin/:id', isLoggedIn, isAdmin, addNewAdmin);
 
 
